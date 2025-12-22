@@ -21,6 +21,18 @@ if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/
     exit 1
 fi
 
+# 检查 Docker daemon 是否运行
+if ! docker info &> /dev/null; then
+    echo "❌ 错误：Docker daemon 未运行"
+    echo ""
+    echo "💡 解决方案："
+    echo "   1. macOS: 请打开 Docker Desktop 应用并等待其完全启动"
+    echo "   2. Linux: 请运行 'sudo systemctl start docker' 启动 Docker 服务"
+    echo "   3. 检查状态: docker info"
+    echo ""
+    exit 1
+fi
+
 # 获取脚本所在目录
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SCRIPT_DIR"

@@ -331,6 +331,20 @@ REMOTE_RETENTION_DAYS=0
 
 ## ❓ 常见问题
 
+### 修改了 docker/.env 配置后不生效
+
+**原因** docker compose restart 只重启容器，不会重新读取 .env 文件中的环境变量。
+
+**解决方案**：
+cd docker
+docker compose down
+docker compose up -d trend-radar
+
+### or
+
+cd docker
+docker compose up -d --force-recreate trend-radar
+
 ### 1. 配置文件修改后不生效
 
 **问题**：修改 `config.yaml` 后配置没有生效

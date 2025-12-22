@@ -2,6 +2,10 @@
 # macOS Docker 服务管理辅助脚本
 # 用于解决 MacBook 合盖后 Docker 服务停止的问题
 
+# 终端：
+# sudo pmset -b disablesleep 1 盒盖后不睡眠
+# sudo pmset -b disablesleep 0 盒盖后睡眠
+
 set -e
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
